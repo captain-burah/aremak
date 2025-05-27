@@ -326,7 +326,7 @@
               Streamline vehicle access with intelligent gate barriers using RFID tags, ANPR cameras, or remote
               controls, designed for busy parking and entry zones.
             </p>
-            <a href="services/automatic-gate-barrier-solutions" class="btn btn-outline-primary bg-white px-5 py-2 rounded-pill text-dark" title="Maintenance"
+            <a href="/services/automatic-gate-barrier-solutions" class="btn btn-outline-primary bg-white px-5 py-2 rounded-pill text-dark" title="Maintenance"
               aria-label="maintenance">
               More
               <img style=" width: 25px;"
