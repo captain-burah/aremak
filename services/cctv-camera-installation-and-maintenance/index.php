@@ -323,7 +323,7 @@
   <?php
     include('../footer.php');
   ?>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 
