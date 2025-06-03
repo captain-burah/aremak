@@ -159,6 +159,10 @@ $form_disabled = ($ack_message !== "") ? 'disabled' : '';
       height: 300px;
     }
 
+    .footer-icons {
+      color: #ffffff !important;
+    }
+
     @media only screen and (max-width:500px) {
       /* For mobile phones: */
 

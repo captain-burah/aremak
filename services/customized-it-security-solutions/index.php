@@ -1,100 +1,38 @@
+
+
+<?php
+//START SESSION
+session_start();
+require_once __DIR__ . '/../../config.php';
+
+//CHECK FOR SESSION MESSAGES
+if (isset($_SESSION["ack_message"])) {
+    if ($_SESSION["ack_message"] == 'success') {
+        $ack_message = "success";
+    } else {
+        $ack_message = $_SESSION["ack_message"];
+    }
+
+    //UNSET IT AFTER ASSIGNING TO VARIABLE
+    // unset($_SESSION["ack_message"]);
+} else {
+    $ack_message = "";
+}
+
+$form_disabled = ($ack_message !== "") ? 'disabled' : '';
+?>
+
+
 <!doctype html>
+
 <html lang="en">
 
-<head>
-    <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="securetoken123456" />
-    <meta name="robots" content="index, follow">
+<?php
+$page_title = "Custom IT & Security Solutions Dubai | Tailored Technology Integration";
+$og_url = "https://www.aremak.com/services/customized-it-security-solutions";
 
-    <!-- FAVICON AND MANIFEST -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/favicon/site.webmanifest">
-
-    <!--TITLE & DESCRIPTIONS-->
-    <title>Custom IT & Security Solutions Dubai | Tailored Technology Integration</title>
-    <meta name="description"
-        content="Get customized IT and security systems tailored to your business needs, from automation to surveillance and network infrastructure in Dubai.">
-    <meta name="author" content="Aremak">
-
-    <!-- ESSENTIAL OG TAGS -->
-  <meta property="og:title" content="CCTV Camera Installation and Maintenance<">
-  <meta property="og:description"
-    content="Explore Aremak's certified IT and security services in Dubai, including CCTV, access control, structured cabling, and smart systems tailored for homes and businesses.">
-  <meta property="og:image" content="https://www.aremak.com/images/images/aremak-networking-systems-dubai.jpg">
-  <meta property="og:url" content="https://www.aremak.com/services">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Aremak Networking Systems">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CCTV Camera Installation and Maintenance<">
-  <meta name="twitter:description"
-    content="Explore Aremak's certified IT and security services in Dubai, including CCTV, access control, structured cabling, and smart systems tailored for homes and businesses.">
-  <meta name="twitter:image" content="https://www.aremak.com/images/og-services.jpg">
-
-
-
-    <!--CANONICAL LINKS-->
-    <link rel="canonical" href="https://www.aremak.com/services/customized-it-security-solutions">
-
-    <!--GOOGLE FONTS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Oswald:wght@400;600&display=swap"
-        rel="stylesheet">
-
-    <!--CSS-->
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!--CUSTOM CSS-->
-    <style>
-        html,
-        body {
-            font-family: "Montserrat", sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            color: #1c1c1c;
-            background-color: #fff;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: "Oswald", sans-serif;
-        }
-
-        .hero-heading {
-            font-size: 3rem;
-            color: #fff;
-            line-height: 1.2;
-            width: 60%;
-        }
-
-        .hero-paragraph {
-            font-size: 16px;
-            color: #fff;
-            width: 60%;
-        }
-
-        @media only screen and (max-width: 500px) {
-
-            .hero-heading,
-            .hero-paragraph {
-                width: 100%;
-                font-size: 1.5rem;
-            }
-        }
-    </style>
-</head>
+include "../header.php";
+?>
 
 <body>
 
@@ -104,14 +42,23 @@
 
     <!-- HEADER -->
     <section class="bg-image d-flex align-items-center"
-        style="background-image: url('../images/services/cybersecurity-banner.webp'); height: 50vh; background-size: cover; background-position: center;">
-        <div class="mask w-100 h-100 d-flex align-items-center" style="background-color: rgba(0, 0, 0, 0.5);">
-            <div class="container text-white text-center">
-                <h1 class="hero-heading">Customized IT Security Solutions</h1>
-                <p class="hero-paragraph">Protect your digital infrastructure with tailored cybersecurity services</p>
+            style="background-image: url('../images/services/4.webp'); height: 100vh; background-size: cover; background-position: center;">
+            <div class="mask w-100 h-100 d-flex align-items-center" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="container text-white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="hero-heading">Customized IT Security Solutions</h1>
+                        </div>
+                        <div class="col-md-6 my-auto">
+                            <p class="hero-paragraph">
+                                <span id="typewriter-text"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- HEADER -->
 
     <!-- INTRO -->
     <section class="bg-white py-5">
@@ -163,22 +110,9 @@
     <!-- CONTACT -->
     <section class="bg-white py-5">
         <div class="container">
-            <h2 class="text-primary">Request a Free Consultation</h2>
-            <form class="border border-primary rounded px-3 py-4">
-                <div class="form-group text-primary">
-                    <label for="name">Full Name</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-                <div class="form-group text-primary">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="form-group text-primary">
-                    <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Request</button>
-            </form>
+            <?php
+            include('../form.php');
+            ?>
         </div>
     </section>
 
@@ -187,7 +121,23 @@
     ?>
 
     <script src="../../js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const text = "Tailored IT security that fits your business like a digital glove";
+            const target = document.getElementById("typewriter-text");
+            let i = 0;
 
+            function typeWriter() {
+                if (i < text.length) {
+                    target.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30); // adjust speed here
+                }
+            }
+
+            typeWriter();
+        });
+    </script>
 </body>
 
 </html>

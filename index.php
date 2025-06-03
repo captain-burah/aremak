@@ -163,6 +163,10 @@
       .mobile_view {
         display: none;
       }
+
+      .footer-icons{
+            color: #ffffff !important;
+        }
     </style>
 
   </head>
@@ -447,7 +451,7 @@
             <p class="text-dark mx-auto" style="font-size: 16px; line-height: 1.5;">
               The contracting sector is witnessing rapid growth, and an increase in the demand for specialized and qualiﬁed companies to implement the huge number of multiple projects
             </p>   
-            <a href="#" class="btn btn-warning rounded-pill text-primary border border-primary" style="">Explore More</a>
+            <a href="/projects" class="btn btn-warning rounded-pill text-primary border border-primary" style="">Explore More</a>
           </div>
         </div>
         

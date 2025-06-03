@@ -105,6 +105,10 @@
       font-size: 1.5rem !important;
     }
 
+    .footer-icons{
+            color: #ffffff !important;
+        }
+
     /* h1{
         font-size: 3rem !important;
         font-weight: 400 !important;

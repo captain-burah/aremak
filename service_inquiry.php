@@ -12,6 +12,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 //READ THE POST REQUESTS
 $reCaptchaToken = $_POST['recaptcha_token'];
+$page_url = htmlspecialchars(trim($_POST["page_url"]), ENT_QUOTES, 'UTF-8');
 $name = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES, 'UTF-8');
 $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 $phone = htmlspecialchars(trim($_POST["phone"]), ENT_QUOTES, 'UTF-8');
@@ -24,6 +25,8 @@ $empty = [];
 // Basic validation
 if (empty($name))
     $empty[] = "Name";
+if (empty($page_url))
+    $empty[] = "page_url";
 if (empty($email))
     $empty[] = "Email";
 if (empty($phone))
@@ -33,7 +36,7 @@ if (empty($message))
 
 //RECTIFY THE INPUTS FOR SQL/PYTHON INJECTION
 $forbiddenWords = '/\b(select|update|eval|delete|insert|drop|alter|truncate)\b/i'; // Regular expression for keywords (case-insensitive)
-if (preg_match($forbiddenWords, $name . $message . $phone)) {
+if (preg_match($forbiddenWords, $name . $message . $phone . $page_url)) {
     $empty[] = urlencode("Suspicious input detected.");
 }
 
@@ -126,6 +129,10 @@ if (!empty($empty)) {
                             <td style="padding: 8px; font-weight: bold; color: #003366;">IP Address:</td>
                             <td style="padding: 8px; color: #333;">' . htmlspecialchars($field_ip) . '</td>
                         </tr>
+                        <tr>
+                            <td style="padding: 8px; font-weight: bold; color: #003366;">Inquiry Page:</td>
+                            <td style="padding: 8px; color: #333;">' . htmlspecialchars($page_url) . '</td>
+                        </tr>
                         <tr style="background-color: #f1f1f1;">
                             <td style="padding: 8px; font-weight: bold; color: #003366; vertical-align: top;">Message:</td>
                             <td style="padding: 8px; color: #333;">' . nl2br(htmlspecialchars($message)) . '</td>
@@ -141,6 +148,7 @@ if (!empty($empty)) {
                 "Phone: $phone\n" .
                 "Email: $email\n" .
                 "IP Address: $field_ip\n" .
+                "Inquiry Page: $page_url\n" .
                 "Message: $message";
 
 
@@ -148,9 +156,12 @@ if (!empty($empty)) {
 
             //RETURN TO PAGE WITH SESSION STATUS
             $_SESSION["ack_message"] = "success";
-            // header("Location: thank-you");      
-            header("Location: /thank-you");
+            header("Location: " . $page_url);
+            // header("Location: contact/index.php?ack_message=".urlencode("success"));
+            // echo "Message has been sent";
+            // Clear session and exit to prevent further processing
             exit;
+
 
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

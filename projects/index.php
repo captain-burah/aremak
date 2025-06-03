@@ -90,6 +90,10 @@
       width: 50% !important;
     }
 
+    .footer-icons{
+            color: #ffffff !important;
+        }
+
     .hero-paragraph {
       font-family: "Montserrat", sans-serif !important;
       color: #ffffff !important;

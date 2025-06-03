@@ -90,6 +90,10 @@
       width: 50% !important;
     }
 
+    .footer-icons {
+      color: #ffffff !important;
+    }
+
     .hero-paragraph {
       font-family: "Montserrat", sans-serif !important;
       color: #ffffff !important;
@@ -231,7 +235,7 @@
     <section class=" text-left text-left py-5" style=" background-color: #f1f1f1;">
       <div class="container">
         <h2 class="text-primary">Founding Team</h2>
-        <p class="text-dark mx-auto" >
+        <p class="text-dark mx-auto">
           The company was founded by a team of seasoned professionals with extensive experience in security systems, IT
           infrastructure, and smart automation. United by a shared passion for innovation and reliability, our
           leadership brings together expertise in engineering, project management, and customer service. Each founder
@@ -250,16 +254,16 @@
     <!-- VISION -->
     <section class=" text-left text-left mb-0 py-5" style=" background-color: #fff;">
       <div class="container">
-        <h2 class="text-primary" >Our Vision</h2>
-        <p class="text-dark mx-auto" >
+        <h2 class="text-primary">Our Vision</h2>
+        <p class="text-dark mx-auto">
           To become the most trusted and innovative provider of integrated security and IT solutions in the
           UAE—empowering homes, businesses, and institutions with smarter, safer, and more connected environments
         </p>
 
         <hr>
 
-        <h2 class="text-primary" >Our Mission</h2>
-        <p class="text-dark mx-auto" >
+        <h2 class="text-primary">Our Mission</h2>
+        <p class="text-dark mx-auto">
           Our human cadres are the most valuable thing we have and we are keen to select highly qualiﬁed
           technicians We are always keen to train and qualify our employees on everything new in the ﬁeld of
           construction
@@ -267,7 +271,7 @@
 
         <hr>
 
-        <h2 class="text-primary" >Our Values</h2>
+        <h2 class="text-primary">Our Values</h2>
         <ul class="text-dark">
           <li><strong>Integrity:</strong> We operate with transparency and uphold the highest ethical standards in
             everything we do.</li>
