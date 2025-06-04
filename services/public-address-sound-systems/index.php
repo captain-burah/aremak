@@ -164,7 +164,7 @@ include "../header.php";
             <?php
             include('../footer.php');
         ?>
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
       const text = "Make every word count — loud, clear, and everywhere it needs to be";

@@ -120,7 +120,7 @@ include "../header.php";
     include('../footer.php');
     ?>
 
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const text = "Tailored IT security that fits your business like a digital glove";

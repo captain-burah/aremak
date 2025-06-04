@@ -148,7 +148,7 @@ include "../header.php";
         include('../footer.php');
     ?>
 
-<script src="../../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       const text = "Centralized satellite systems for seamless multi-unit broadcasting";

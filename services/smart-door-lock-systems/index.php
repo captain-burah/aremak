@@ -172,7 +172,7 @@ include "../header.php";
         include('../footer.php');
     ?>
 
-<script src="../../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       const text = "Security meets convenience with intelligent door locking systems";

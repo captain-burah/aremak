@@ -166,7 +166,7 @@ include "../header.php";
   <?php
     include('../footer.php');
   ?>
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
       const text = "Watch over what matters — we install and maintain with precision";

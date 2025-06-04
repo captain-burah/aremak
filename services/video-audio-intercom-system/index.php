@@ -169,7 +169,7 @@ include "../header.php";
     ?>
 
 
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const text = "Two-way communication meets crystal-clear visuals for total entry control";
