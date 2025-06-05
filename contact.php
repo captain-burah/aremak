@@ -81,22 +81,34 @@ if (!empty($empty)) {
     if ($curlResponseArray["success"] == true && $curlResponseArray["score"] >= 0.5) {
 
         // --- Log Submission to a File ---
-        $logData = "[" . date('Y-m-d H:i:s') . "]\n" .
-            "Name: $name\n" .
-            "Email: $email\n" .
-            "Phone: $phone\n" .
-            "IP Address: $field_ip\n" .
-            "Message: $message\n" .
-            "--------------------------\n";
+        // Prepare data to store
+        $csvData = [
+            date("Y-m-d H:i:s"),   // Timestamp
+            $name,
+            $email,
+            $phone,
+            $message,
+            $field_ip
+        ];
 
-        $logFilePath = __DIR__ . './contact_form_submissions.log';
+        // File path (put outside public folder in real hosting)
+        $file = __DIR__ . '/submissions.csv';
 
-        if (!file_exists($logFilePath)) {
-            // Create the file and add a header
-            file_put_contents($logFilePath, "===== Contact Form Submissions =====\n\n");
+        // Check if file exists to write headers
+        $writeHeader = !file_exists($file);
+
+        // Open file for appending
+        $fp = fopen($file, 'a');
+
+        if ($fp) {
+            if ($writeHeader) {
+                fputcsv($fp, ['Date', 'Name', 'Email', 'Phone', 'Message', 'IP']);
+            }
+            fputcsv($fp, $csvData); // Write the submission
+            fclose($fp);
+        } else {
+            error_log("⚠️ Could not open file to write CSV: $file");
         }
-
-        file_put_contents($logFilePath, $logData, FILE_APPEND | LOCK_EX);
 
 
 

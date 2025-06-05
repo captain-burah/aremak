@@ -80,24 +80,6 @@ if (!empty($empty)) {
 
     if ($curlResponseArray["success"] == true && $curlResponseArray["score"] >= 0.5) {
 
-        // --- Log Submission to a File ---
-        $logData = "[" . date('Y-m-d H:i:s') . "]\n" .
-            "Name: $name\n" .
-            "Email: $email\n" .
-            "Phone: $phone\n" .
-            "IP Address: $field_ip\n" .
-            "Message: $message\n" .
-            "--------------------------\n";
-
-        $logFilePath = __DIR__ . './contact_form_submissions.log';
-
-        if (!file_exists($logFilePath)) {
-            // Create the file and add a header
-            file_put_contents($logFilePath, "===== Contact Form Submissions =====\n\n");
-        }
-
-        file_put_contents($logFilePath, $logData, FILE_APPEND | LOCK_EX);
-
 
         //OPEN THE MAILER FUNCTION
         $mail = new PHPMailer(true);
