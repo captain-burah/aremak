@@ -82,8 +82,11 @@ if (!empty($empty)) {
 
         // --- Log Submission to a File ---
         // Prepare data to store
+        $dt = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+        $timestamp = $dt->format('Y-m-d H:i:s');
+        
         $csvData = [
-            date("Y-m-d H:i:s"),   // Timestamp
+            $timestamp,
             $name,
             $email,
             $phone,
