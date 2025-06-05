@@ -21,7 +21,7 @@
               <a class="nav-link active mx-2" href="/services">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active mx-2" href="projects">Projects</a>
+              <a class="nav-link active mx-2" href="/projects">Projects</a>
             </li>
             <li class="nav-item"><a
                 class="nav-link btn btn-warning text-primary border border-primary px-3 rounded-pill mx-2"
