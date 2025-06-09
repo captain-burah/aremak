@@ -115,6 +115,84 @@ if (!empty($empty)) {
 
 
 
+        //OPEN THE MAILER FUNCTION
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->SMTPDebug = false;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host = 'box2370.bluehost.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+            $mail->Username = 'notifications@devhub.aremakuae.com';                     //SMTP username
+            $mail->Password = 'notifications_2025';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port = 587;
+
+            //Recipients
+            $mail->From = "notifications@devhub.aremakuae.com";
+            $mail->FromName = "Aremak Notifications";
+
+            $mail->addAddress("cptburah@gmail.com", "Captain Burah");
+
+
+            //Content
+            $mail->isHTML(true); // Set email format to HTML
+            $mail->Subject = 'Aremak Notifications';
+
+            $mail->Body = '
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+                    <h2 style="color: #003366; border-bottom: 2px solid #ffcc00; padding-bottom: 10px;">📩 Aremak Website Contact Inquiry</h2>
+                    <p style="font-size: 16px; color: #333;"><strong>✨ New inquiry received via the contact form!</strong></p>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <tr>
+                            <td style="padding: 8px; font-weight: bold; color: #003366;">Name:</td>
+                            <td style="padding: 8px; color: #333;">' . htmlspecialchars($name) . '</td>
+                        </tr>
+                        <tr style="background-color: #f1f1f1;">
+                            <td style="padding: 8px; font-weight: bold; color: #003366;">Phone:</td>
+                            <td style="padding: 8px; color: #333;">' . htmlspecialchars($phone) . '</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; font-weight: bold; color: #003366;">Email:</td>
+                            <td style="padding: 8px; color: #333;">' . htmlspecialchars($email) . '</td>
+                        </tr>
+                        <tr style="background-color: #f1f1f1;">
+                            <td style="padding: 8px; font-weight: bold; color: #003366;">IP Address:</td>
+                            <td style="padding: 8px; color: #333;">' . htmlspecialchars($field_ip) . '</td>
+                        </tr>
+                        <tr style="background-color: #f1f1f1;">
+                            <td style="padding: 8px; font-weight: bold; color: #003366; vertical-align: top;">Message:</td>
+                            <td style="padding: 8px; color: #333;">' . nl2br(htmlspecialchars($message)) . '</td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top: 20px; font-size: 14px; color: #999;">This message was sent from your website contact form. Please do not reply directly to this email.</p>
+                </div>
+            ';
+
+            $mail->AltBody = "Aremak Website Contact Page Inquiry\n\n" .
+                "Name: $name\n" .
+                "Phone: $phone\n" .
+                "Email: $email\n" .
+                "IP Address: $field_ip\n" .
+                "Message: $message";
+
+
+            $response = $mail->send();
+
+            //RETURN TO PAGE WITH SESSION STATUS
+            $_SESSION["ack_message"] = "success";
+            // header("Location: thank-you");      
+            header("Location: /thank-you");
+            exit;
+
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+
+
         $output = "success";
 
     } else {

@@ -83,6 +83,40 @@ if (!empty($empty)) {
 
     if ($curlResponseArray["success"] == true && $curlResponseArray["score"] >= 0.5) {
 
+        // --- Log Submission to a File ---
+        // Prepare data to store
+        $dt = new DateTime('now', new DateTimeZone('Asia/Dubai'));
+        $timestamp = $dt->format('Y-m-d H:i:s');
+        
+        $csvData = [
+            $timestamp,
+            $name,
+            $email,
+            $phone,
+            $message,
+            $field_ip
+        ];
+
+        // File path (put outside public folder in real hosting)
+        $file = __DIR__ . '/submissions.csv';
+
+        // Check if file exists to write headers
+        $writeHeader = !file_exists($file);
+
+        // Open file for appending
+        $fp = fopen($file, 'a');
+
+        if ($fp) {
+            if ($writeHeader) {
+                fputcsv($fp, ['Date', 'Name', 'Email', 'Phone', 'Message', 'IP']);
+            }
+            fputcsv($fp, $csvData); // Write the submission
+            fclose($fp);
+        } else {
+            error_log("⚠️ Could not open file to write CSV: $file");
+        }
+
+
         //OPEN THE MAILER FUNCTION
         $mail = new PHPMailer(true);
 
