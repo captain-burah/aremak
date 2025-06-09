@@ -134,7 +134,7 @@ if (!empty($empty)) {
             $mail->From = "notifications@devhub.aremakuae.com";
             $mail->FromName = "Aremak Notifications";
 
-            $mail->addAddress("info@aremakuae.com", "Aremak Notifications");
+            $mail->addAddress("info@aremakuae.onmicrosoft.com", "Aremak Notifications");
 
 
             //Content
